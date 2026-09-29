@@ -1,0 +1,58 @@
+(node:11364) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/integration/lotes.test.js
+PASS tests/integration/donantes.test.js
+PASS tests/integration/security.test.js
+PASS tests/integration/auth.test.js
+PASS tests/unit/authService.test.js
+PASS tests/unit/loteService.test.js
+PASS tests/unit/validators.test.js
+PASS tests/unit/lotes.unit.test.js
+PASS tests/unit/repository.test.js
+PASS tests/unit/config.test.js
+PASS tests/unit/middleware.test.js
+----------------------------|---------|----------|---------|---------|-------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------|---------|----------|---------|---------|-------------------
+All files                   |     100 |    97.81 |     100 |     100 |                   
+ src                        |     100 |      100 |     100 |     100 |                   
+  app.js                    |     100 |      100 |     100 |     100 |                   
+ src/config                 |     100 |      100 |     100 |     100 |                   
+  index.js                  |     100 |      100 |     100 |     100 |                   
+ src/db                     |     100 |      100 |     100 |     100 |                   
+  database.js               |     100 |      100 |     100 |     100 |                   
+ src/demo                   |     100 |      100 |     100 |     100 |                   
+  seed.js                   |     100 |      100 |     100 |     100 |                   
+ src/middleware             |     100 |      100 |     100 |     100 |                   
+  auth.js                   |     100 |      100 |     100 |     100 |                   
+  errorHandler.js           |     100 |      100 |     100 |     100 |                   
+ src/repositories           |     100 |    85.18 |     100 |     100 |                   
+  donanteRepository.js      |     100 |      100 |     100 |     100 |                   
+  loteRepository.js         |     100 |    66.66 |     100 |     100 | 75-88             
+  notificacionRepository.js |     100 |      100 |     100 |     100 |                   
+ src/routes                 |     100 |    94.91 |     100 |     100 |                   
+  auth.routes.js            |     100 |      100 |     100 |     100 |                   
+  donantes.routes.js        |     100 |    95.83 |     100 |     100 | 45                
+  extra.routes.js           |     100 |    85.71 |     100 |     100 | 49                
+  lotes.routes.js           |     100 |    95.45 |     100 |     100 | 49                
+ src/services               |     100 |    98.86 |     100 |     100 |                   
+  authService.js            |     100 |      100 |     100 |     100 |                   
+  loteService.js            |     100 |     98.5 |     100 |     100 | 23                
+ src/utils                  |     100 |      100 |     100 |     100 |                   
+  csv.js                    |     100 |      100 |     100 |     100 |                   
+  errors.js                 |     100 |      100 |     100 |     100 |                   
+  validators.js             |     100 |      100 |     100 |     100 |                   
+----------------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 539/539 )
+Branches     : 97.81% ( 358/366 )
+Functions    : 100% ( 123/123 )
+Lines        : 100% ( 474/474 )
+================================================================================
+
+Test Suites: 11 passed, 11 total
+Tests:       141 passed, 141 total
+Snapshots:   0 total
+Time:        2.239 s, estimated 3 s
+Ran all test suites.

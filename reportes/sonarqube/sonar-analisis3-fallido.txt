@@ -1,0 +1,23 @@
+SonarQube - Análisis 3 (versión 1.1.0, primera versión con la página web) - QUALITY GATE: FAILED
+Condiciones: new_violations = 27 (umbral 0) · new_security_hotspots_reviewed = 0 % (umbral 100 %)
+Cobertura de código nuevo 97.1 % (OK) · duplicación 0 % (OK)
+
+Observaciones (27):
+- S7764 x9  Preferir globalThis sobre window (frontend)
+- S3358 x4  Ternarios anidados (shared.js)
+- S7748 x4  Números con cero decimal sobrante (seed.js)
+- S7721 x3  Funciones que conviene mover al ámbito externo (loteService.js, admin.js)
+- S7785 x2  Preferir top-level await (app.js, demo.js)
+- S7781 x1  Usar String#replaceAll (csv.js)
+- S6594 x1  Usar RegExp.exec (api.js)
+- S6582 x1  Usar encadenamiento opcional (app.js)
+- S2004 x1  Funciones anidadas a más de 4 niveles (admin.js)  [ALTA]
+- S6819 x1  Usar <output> en lugar de role="status" (index.html, accesibilidad)
+- S1135 x1  Comentario "TODO" (falso positivo por la palabra "todo" en español, dom.js)
+
+Security Hotspots (2):
+- S2068  Contraseña en el código (src/demo/seed.js) -> Revisado: SEGURO (cuentas ficticias del modo demo)
+- S5728  CSP deshabilitada en helmet (src/app.js) -> Corregido: la CSP global queda activa y las páginas la reemplazan
+
+Resultado tras las correcciones (análisis 4, versión 1.1.1): QUALITY GATE PASSED, 0 observaciones abiertas,
+0 aceptadas, 100 % de hotspots revisados, deuda técnica 0 min.

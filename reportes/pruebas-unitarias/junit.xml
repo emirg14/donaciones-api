@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="141" failures="0" errors="0" time="2.191">
+  <testsuite name="API de lotes, notificaciones y reportes" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:22" time="0.746" tests="7">
+    <testcase classname="API de lotes, notificaciones y reportes flujo completo por HTTP con permisos, notificaciones y trazabilidad" name="API de lotes, notificaciones y reportes flujo completo por HTTP con permisos, notificaciones y trazabilidad" time="0.145">
+    </testcase>
+    <testcase classname="API de lotes, notificaciones y reportes validaciones y errores de la API de lotes" name="API de lotes, notificaciones y reportes validaciones y errores de la API de lotes" time="0.053">
+    </testcase>
+    <testcase classname="API de lotes, notificaciones y reportes reporte CSV solo para administradores y con datos neutralizados" name="API de lotes, notificaciones y reportes reporte CSV solo para administradores y con datos neutralizados" time="0.033">
+    </testcase>
+    <testcase classname="API de lotes, notificaciones y reportes cuentas: el administrador filtra por tipo" name="API de lotes, notificaciones y reportes cuentas: el administrador filtra por tipo" time="0.026">
+    </testcase>
+    <testcase classname="API de lotes, notificaciones y reportes endpoints públicos sin datos personales y sin modo demo" name="API de lotes, notificaciones y reportes endpoints públicos sin datos personales y sin modo demo" time="0.029">
+    </testcase>
+    <testcase classname="API de lotes, notificaciones y reportes sirve la página web y sus archivos con una CSP propia" name="API de lotes, notificaciones y reportes sirve la página web y sus archivos con una CSP propia" time="0.031">
+    </testcase>
+    <testcase classname="Modo demostración genera cuentas y datos ficticios coherentes" name="Modo demostración genera cuentas y datos ficticios coherentes" time="0.053">
+    </testcase>
+  </testsuite>
+  <testsuite name="API de donantes (roles admin/usuario)" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:23" time="0.392" tests="15">
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes admin obtiene la lista paginada" name="API de donantes (roles admin/usuario) GET /api/donantes admin obtiene la lista paginada" time="0.056">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes valores de paginación fuera de rango se acotan" name="API de donantes (roles admin/usuario) GET /api/donantes valores de paginación fuera de rango se acotan" time="0.018">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes regresión ZAP: página gigantesca ya no provoca error 500" name="API de donantes (roles admin/usuario) GET /api/donantes regresión ZAP: página gigantesca ya no provoca error 500" time="0.018">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes usuario normal -&gt; 403" name="API de donantes (roles admin/usuario) GET /api/donantes usuario normal -&gt; 403" time="0.017">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes sin token -&gt; 401" name="API de donantes (roles admin/usuario) GET /api/donantes sin token -&gt; 401" time="0.019">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes/:id el donante consulta su propio registro" name="API de donantes (roles admin/usuario) GET /api/donantes/:id el donante consulta su propio registro" time="0.018">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes/:id el donante NO puede consultar a otro (IDOR) -&gt; 403" name="API de donantes (roles admin/usuario) GET /api/donantes/:id el donante NO puede consultar a otro (IDOR) -&gt; 403" time="0.018">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) GET /api/donantes/:id admin consulta cualquiera; inexistente -&gt; 404; id inválido -&gt; 400" name="API de donantes (roles admin/usuario) GET /api/donantes/:id admin consulta cualquiera; inexistente -&gt; 404; id inválido -&gt; 400" time="0.025">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol admin promueve a un donante" name="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol admin promueve a un donante" time="0.018">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol rol inválido -&gt; 400; sin cuerpo -&gt; 400; inexistente -&gt; 404" name="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol rol inválido -&gt; 400; sin cuerpo -&gt; 400; inexistente -&gt; 404" time="0.022">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol un admin no puede quitarse su propio rol" name="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol un admin no puede quitarse su propio rol" time="0.02">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol usuario normal no puede cambiar roles -&gt; 403" name="API de donantes (roles admin/usuario) PATCH /api/donantes/:id/rol usuario normal no puede cambiar roles -&gt; 403" time="0.017">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) DELETE /api/donantes/:id admin elimina -&gt; 204, luego 404" name="API de donantes (roles admin/usuario) DELETE /api/donantes/:id admin elimina -&gt; 204, luego 404" time="0.019">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) DELETE /api/donantes/:id admin no puede eliminarse a sí mismo" name="API de donantes (roles admin/usuario) DELETE /api/donantes/:id admin no puede eliminarse a sí mismo" time="0.017">
+    </testcase>
+    <testcase classname="API de donantes (roles admin/usuario) DELETE /api/donantes/:id usuario normal -&gt; 403" name="API de donantes (roles admin/usuario) DELETE /api/donantes/:id usuario normal -&gt; 403" time="0.017">
+    </testcase>
+  </testsuite>
+  <testsuite name="Pruebas de seguridad (OWASP Top 10)" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:23" time="0.243" tests="16">
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;&apos; OR &apos;1&apos;=&apos;1&apos; --&quot; no autentica ni rompe la BD" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;&apos; OR &apos;1&apos;=&apos;1&apos; --&quot; no autentica ni rompe la BD" time="0.042">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;admin@donaciones.mx&apos; --&quot; no autentica ni rompe la BD" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;admin@donaciones.mx&apos; --&quot; no autentica ni rompe la BD" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;\&quot; OR \&quot;\&quot;=\&quot;&quot; no autentica ni rompe la BD" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;\&quot; OR \&quot;\&quot;=\&quot;&quot; no autentica ni rompe la BD" time="0.007">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;&apos;; DROP TABLE donantes; --&quot; no autentica ni rompe la BD" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) login con payload &quot;&apos;; DROP TABLE donantes; --&quot; no autentica ni rompe la BD" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) payload SQLi en el parámetro :id -&gt; 400" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (SQLi) payload SQLi en el parámetro :id -&gt; 400" time="0.012">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) rechaza &quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot; en campos de texto" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) rechaza &quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot; en campos de texto" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) rechaza &quot;\&quot;&gt;&lt;img src=x onerror=alert(1)&gt;&quot; en campos de texto" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) rechaza &quot;\&quot;&gt;&lt;img src=x onerror=alert(1)&gt;&quot; en campos de texto" time="0.007">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) rechaza &quot;javascript:alert(1)&quot; en campos de texto" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) rechaza &quot;javascript:alert(1)&quot; en campos de texto" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) las respuestas son JSON con CSP restrictiva y nosniff" name="Pruebas de seguridad (OWASP Top 10) A03 Inyección (XSS) las respuestas son JSON con CSP restrictiva y nosniff" time="0.007">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A01/A07 Control de acceso y autenticación token con alg &quot;none&quot; y rol admin forjado -&gt; 401" name="Pruebas de seguridad (OWASP Top 10) A01/A07 Control de acceso y autenticación token con alg &quot;none&quot; y rol admin forjado -&gt; 401" time="0.007">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A01/A07 Control de acceso y autenticación token expirado -&gt; 401 con mensaje claro" name="Pruebas de seguridad (OWASP Top 10) A01/A07 Control de acceso y autenticación token expirado -&gt; 401 con mensaje claro" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) A01/A07 Control de acceso y autenticación rate limiting en /api/auth tras exceder el máximo -&gt; 429" name="Pruebas de seguridad (OWASP Top 10) A01/A07 Control de acceso y autenticación rate limiting en /api/auth tras exceder el máximo -&gt; 429" time="0.024">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) Robustez de la API JSON mal formado -&gt; 400" name="Pruebas de seguridad (OWASP Top 10) Robustez de la API JSON mal formado -&gt; 400" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) Robustez de la API cuerpo mayor a 10 kb -&gt; 413" name="Pruebas de seguridad (OWASP Top 10) Robustez de la API cuerpo mayor a 10 kb -&gt; 413" time="0.007">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) Robustez de la API ruta inexistente -&gt; 404 JSON" name="Pruebas de seguridad (OWASP Top 10) Robustez de la API ruta inexistente -&gt; 404 JSON" time="0.008">
+    </testcase>
+    <testcase classname="Pruebas de seguridad (OWASP Top 10) Robustez de la API createApp funciona con su configuración por defecto" name="Pruebas de seguridad (OWASP Top 10) Robustez de la API createApp funciona con su configuración por defecto" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="API de autenticación" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:23" time="0.183" tests="11">
+    <testcase classname="API de autenticación GET /health responde ok" name="API de autenticación GET /health responde ok" time="0.027">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/registro registra un donante y responde 201 sin exponer la contraseña" name="API de autenticación POST /api/auth/registro registra un donante y responde 201 sin exponer la contraseña" time="0.011">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/registro no permite auto-asignarse rol admin (escalamiento de privilegios)" name="API de autenticación POST /api/auth/registro no permite auto-asignarse rol admin (escalamiento de privilegios)" time="0.008">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/registro datos inválidos -&gt; 400 con detalles" name="API de autenticación POST /api/auth/registro datos inválidos -&gt; 400 con detalles" time="0.007">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/registro correo duplicado -&gt; 409" name="API de autenticación POST /api/auth/registro correo duplicado -&gt; 409" time="0.015">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/login credenciales correctas -&gt; token Bearer" name="API de autenticación POST /api/auth/login credenciales correctas -&gt; token Bearer" time="0.011">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/login credenciales incorrectas -&gt; 401" name="API de autenticación POST /api/auth/login credenciales incorrectas -&gt; 401" time="0.007">
+    </testcase>
+    <testcase classname="API de autenticación POST /api/auth/login cuerpo inválido -&gt; 400" name="API de autenticación POST /api/auth/login cuerpo inválido -&gt; 400" time="0.006">
+    </testcase>
+    <testcase classname="API de autenticación GET /api/auth/perfil devuelve el perfil con token válido" name="API de autenticación GET /api/auth/perfil devuelve el perfil con token válido" time="0.01">
+    </testcase>
+    <testcase classname="API de autenticación GET /api/auth/perfil sin token -&gt; 401" name="API de autenticación GET /api/auth/perfil sin token -&gt; 401" time="0.006">
+    </testcase>
+    <testcase classname="API de autenticación GET /api/auth/perfil token de un usuario eliminado -&gt; 404" name="API de autenticación GET /api/auth/perfil token de un usuario eliminado -&gt; 404" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="authService.registrar" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:23" time="0.094" tests="9">
+    <testcase classname="authService.registrar guarda la contraseña con hash bcrypt, nunca en texto plano" name="authService.registrar guarda la contraseña con hash bcrypt, nunca en texto plano" time="0.014">
+    </testcase>
+    <testcase classname="authService.registrar rechaza correo duplicado con 409" name="authService.registrar rechaza correo duplicado con 409" time="0.004">
+    </testcase>
+    <testcase classname="authService.registrar rechaza RFC duplicado con 409" name="authService.registrar rechaza RFC duplicado con 409" time="0.004">
+    </testcase>
+    <testcase classname="authService.login y tokens emite un JWT con sub, rol, issuer y audience" name="authService.login y tokens emite un JWT con sub, rol, issuer y audience" time="0.006">
+    </testcase>
+    <testcase classname="authService.login y tokens credenciales incorrectas o usuario inexistente -&gt; mismo error 401" name="authService.login y tokens credenciales incorrectas o usuario inexistente -&gt; mismo error 401" time="0.008">
+    </testcase>
+    <testcase classname="authService.login y tokens verifyToken rechaza tokens alterados, con alg &quot;none&quot; o firmados con otro secreto" name="authService.login y tokens verifyToken rechaza tokens alterados, con alg &quot;none&quot; o firmados con otro secreto" time="0.015">
+    </testcase>
+    <testcase classname="authService.login y tokens verifyToken informa cuando el token expiró" name="authService.login y tokens verifyToken informa cuando el token expiró" time="0.003">
+    </testcase>
+    <testcase classname="authService.seedAdmin crea el administrador una sola vez" name="authService.seedAdmin crea el administrador una sola vez" time="0.009">
+    </testcase>
+    <testcase classname="authService.seedAdmin no hace nada si no hay credenciales configuradas" name="authService.seedAdmin no hace nada si no hay credenciales configuradas" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="loteService" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:24" time="0.073" tests="7">
+    <testcase classname="loteService solo las empresas donantes publican; se avisa a todas las ONG" name="loteService solo las empresas donantes publican; se avisa a todas las ONG" time="0.027">
+    </testcase>
+    <testcase classname="loteService flujo completo disponible → reservado → en_transito → entregado con historial y avisos" name="loteService flujo completo disponible → reservado → en_transito → entregado con historial y avisos" time="0.008">
+    </testcase>
+    <testcase classname="loteService rechaza transiciones inválidas y actores sin permiso" name="loteService rechaza transiciones inválidas y actores sin permiso" time="0.004">
+    </testcase>
+    <testcase classname="loteService la ONG puede liberar; el donante cancela y se le avisa a nadie más" name="loteService la ONG puede liberar; el donante cancela y se le avisa a nadie más" time="0.002">
+    </testcase>
+    <testcase classname="loteService el administrador opera como moderador y se avisa a la ONG y al donante" name="loteService el administrador opera como moderador y se avisa a la ONG y al donante" time="0.002">
+    </testcase>
+    <testcase classname="loteService visibilidad: cada perfil solo ve lo que le corresponde" name="loteService visibilidad: cada perfil solo ve lo que le corresponde" time="0.005">
+    </testcase>
+    <testcase classname="loteService impacto: kilos, comidas y CO2e por perfil y público" name="loteService impacto: kilos, comidas y CO2e por perfil y público" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="validatePassword" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:24" time="0.107" tests="31">
+    <testcase classname="validatePassword acepta una contraseña robusta" name="validatePassword acepta una contraseña robusta" time="0.001">
+    </testcase>
+    <testcase classname="validatePassword rechaza undefined" name="validatePassword rechaza undefined" time="0.001">
+    </testcase>
+    <testcase classname="validatePassword rechaza &quot;Ab1&quot;" name="validatePassword rechaza &quot;Ab1&quot;" time="0">
+    </testcase>
+    <testcase classname="validatePassword rechaza &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa1b&quot;" name="validatePassword rechaza &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa1b&quot;" time="0">
+    </testcase>
+    <testcase classname="validatePassword rechaza &quot;SINMINUSCULA1&quot;" name="validatePassword rechaza &quot;SINMINUSCULA1&quot;" time="0">
+    </testcase>
+    <testcase classname="validatePassword rechaza &quot;sinmayuscula1&quot;" name="validatePassword rechaza &quot;sinmayuscula1&quot;" time="0">
+    </testcase>
+    <testcase classname="validatePassword rechaza &quot;SinNumeroAqui&quot;" name="validatePassword rechaza &quot;SinNumeroAqui&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro acepta un donante válido y normaliza correo y RFC" name="validateRegistro acepta un donante válido y normaliza correo y RFC" time="0.001">
+    </testcase>
+    <testcase classname="validateRegistro acepta registro mínimo sin campos opcionales" name="validateRegistro acepta registro mínimo sin campos opcionales" time="0">
+    </testcase>
+    <testcase classname="validateRegistro ignora campos no permitidos como &quot;rol&quot; (asignación masiva)" name="validateRegistro ignora campos no permitidos como &quot;rol&quot; (asignación masiva)" time="0">
+    </testcase>
+    <testcase classname="validateRegistro usa objeto vacío por defecto" name="validateRegistro usa objeto vacío por defecto" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza nombre inválido: &quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;" name="validateRegistro rechaza nombre inválido: &quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza nombre inválido: 123" name="validateRegistro rechaza nombre inválido: 123" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza email inválido: &quot;admin@x.mx&apos; OR &apos;1&apos;=&apos;1&quot;" name="validateRegistro rechaza email inválido: &quot;admin@x.mx&apos; OR &apos;1&apos;=&apos;1&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza email inválido: &quot;sin-arroba&quot;" name="validateRegistro rechaza email inválido: &quot;sin-arroba&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza empresa inválido: &quot;&lt;img src=x onerror=alert(1)&gt;&quot;" name="validateRegistro rechaza empresa inválido: &quot;&lt;img src=x onerror=alert(1)&gt;&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza rfc inválido: &quot;&apos; OR 1=1 --&quot;" name="validateRegistro rechaza rfc inválido: &quot;&apos; OR 1=1 --&quot;" time="0.001">
+    </testcase>
+    <testcase classname="validateRegistro rechaza telefono inválido: &quot;12345&quot;" name="validateRegistro rechaza telefono inválido: &quot;12345&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro rechaza correos demasiado largos" name="validateRegistro rechaza correos demasiado largos" time="0">
+    </testcase>
+    <testcase classname="validateLogin acepta credenciales bien formadas" name="validateLogin acepta credenciales bien formadas" time="0.001">
+    </testcase>
+    <testcase classname="validateLogin rechaza cuerpo vacío" name="validateLogin rechaza cuerpo vacío" time="0">
+    </testcase>
+    <testcase classname="validateLogin rechaza objetos en lugar de cadenas (inyección NoSQL/tipo)" name="validateLogin rechaza objetos en lugar de cadenas (inyección NoSQL/tipo)" time="0.001">
+    </testcase>
+    <testcase classname="isValidRol y parseId roles permitidos" name="isValidRol y parseId roles permitidos" time="0">
+    </testcase>
+    <testcase classname="isValidRol y parseId parseId(&quot;5&quot;) = 5" name="isValidRol y parseId parseId(&quot;5&quot;) = 5" time="0.001">
+    </testcase>
+    <testcase classname="isValidRol y parseId parseId(&quot;0&quot;) = null" name="isValidRol y parseId parseId(&quot;0&quot;) = null" time="0">
+    </testcase>
+    <testcase classname="isValidRol y parseId parseId(&quot;-1&quot;) = null" name="isValidRol y parseId parseId(&quot;-1&quot;) = null" time="0.001">
+    </testcase>
+    <testcase classname="isValidRol y parseId parseId(&quot;1.5&quot;) = null" name="isValidRol y parseId parseId(&quot;1.5&quot;) = null" time="0">
+    </testcase>
+    <testcase classname="isValidRol y parseId parseId(&quot;1 OR 1=1&quot;) = null" name="isValidRol y parseId parseId(&quot;1 OR 1=1&quot;) = null" time="0">
+    </testcase>
+    <testcase classname="isValidRol y parseId parseId(&quot;abc&quot;) = null" name="isValidRol y parseId parseId(&quot;abc&quot;) = null" time="0">
+    </testcase>
+    <testcase classname="parsePagination (regresión del hallazgo de OWASP ZAP) valores por defecto" name="parsePagination (regresión del hallazgo de OWASP ZAP) valores por defecto" time="0">
+    </testcase>
+    <testcase classname="parsePagination (regresión del hallazgo de OWASP ZAP) acota página y límite a rangos seguros" name="parsePagination (regresión del hallazgo de OWASP ZAP) acota página y límite a rangos seguros" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="validateLote" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:24" time="0.06" tests="24">
+    <testcase classname="validateLote acepta un lote válido y redondea los kilos a un decimal" name="validateLote acepta un lote válido y redondea los kilos a un decimal" time="0">
+    </testcase>
+    <testcase classname="validateLote convierte cadenas numéricas y permite omitir coordenadas" name="validateLote convierte cadenas numéricas y permite omitir coordenadas" time="0">
+    </testcase>
+    <testcase classname="validateLote usa objeto vacío por defecto y la fecha actual" name="validateLote usa objeto vacío por defecto y la fecha actual" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;titulo&quot;: &quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;}" name="validateLote rechaza {&quot;titulo&quot;: &quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;titulo&quot;: &quot;ab&quot;}" name="validateLote rechaza {&quot;titulo&quot;: &quot;ab&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;direccion&quot;: &quot;&apos;; DROP TABLE lotes; --&quot;}" name="validateLote rechaza {&quot;direccion&quot;: &quot;&apos;; DROP TABLE lotes; --&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;categoria&quot;: &quot;joyas&quot;}" name="validateLote rechaza {&quot;categoria&quot;: &quot;joyas&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;cantidad_kg&quot;: 0}" name="validateLote rechaza {&quot;cantidad_kg&quot;: 0}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;cantidad_kg&quot;: 10001}" name="validateLote rechaza {&quot;cantidad_kg&quot;: 10001}" time="0.001">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;cantidad_kg&quot;: &quot;mucho&quot;}" name="validateLote rechaza {&quot;cantidad_kg&quot;: &quot;mucho&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;cantidad_kg&quot;: Infinity}" name="validateLote rechaza {&quot;cantidad_kg&quot;: Infinity}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;caducidad&quot;: &quot;2026-09-28&quot;}" name="validateLote rechaza {&quot;caducidad&quot;: &quot;2026-09-28&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;caducidad&quot;: &quot;2028-01-01&quot;}" name="validateLote rechaza {&quot;caducidad&quot;: &quot;2028-01-01&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;caducidad&quot;: &quot;2026-02-30&quot;}" name="validateLote rechaza {&quot;caducidad&quot;: &quot;2026-02-30&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;caducidad&quot;: 20260930}" name="validateLote rechaza {&quot;caducidad&quot;: 20260930}" time="0.001">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;lat&quot;: 95}" name="validateLote rechaza {&quot;lat&quot;: 95}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;lng&quot;: &quot;x&quot;}" name="validateLote rechaza {&quot;lng&quot;: &quot;x&quot;}" time="0">
+    </testcase>
+    <testcase classname="validateLote rechaza {&quot;lat&quot;: null}" name="validateLote rechaza {&quot;lat&quot;: null}" time="0">
+    </testcase>
+    <testcase classname="validateLote acepta la caducidad de hoy (fecha local)" name="validateLote acepta la caducidad de hoy (fecha local)" time="0">
+    </testcase>
+    <testcase classname="validateLote isValidIsoDate" name="validateLote isValidIsoDate" time="0">
+    </testcase>
+    <testcase classname="validateRegistro: tipo de cuenta por defecto es &quot;donante&quot; y acepta &quot;ong&quot;" name="validateRegistro: tipo de cuenta por defecto es &quot;donante&quot; y acepta &quot;ong&quot;" time="0">
+    </testcase>
+    <testcase classname="validateRegistro: tipo de cuenta rechaza tipos desconocidos" name="validateRegistro: tipo de cuenta rechaza tipos desconocidos" time="0">
+    </testcase>
+    <testcase classname="CSV seguro neutraliza fórmulas (CSV injection) y escapa comillas y comas" name="CSV seguro neutraliza fórmulas (CSV injection) y escapa comillas y comas" time="0.001">
+    </testcase>
+    <testcase classname="CSV seguro genera encabezado, filas y BOM UTF-8" name="CSV seguro genera encabezado, filas y BOM UTF-8" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="donanteRepository" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:24" time="0.039" tests="6">
+    <testcase classname="donanteRepository crea un donante con rol &quot;usuario&quot; por defecto y sin exponer el hash" name="donanteRepository crea un donante con rol &quot;usuario&quot; por defecto y sin exponer el hash" time="0.002">
+    </testcase>
+    <testcase classname="donanteRepository findByEmail devuelve el registro completo (incluye hash) o null" name="donanteRepository findByEmail devuelve el registro completo (incluye hash) o null" time="0.001">
+    </testcase>
+    <testcase classname="donanteRepository las consultas son parametrizadas: un payload SQLi no altera la consulta" name="donanteRepository las consultas son parametrizadas: un payload SQLi no altera la consulta" time="0.001">
+    </testcase>
+    <testcase classname="donanteRepository rfcExists, findAll con paginación y count" name="donanteRepository rfcExists, findAll con paginación y count" time="0.002">
+    </testcase>
+    <testcase classname="donanteRepository updateRol y remove" name="donanteRepository updateRol y remove" time="0.001">
+    </testcase>
+    <testcase classname="donanteRepository la base de datos impone correo único y roles válidos" name="donanteRepository la base de datos impone correo único y roles válidos" time="0.014">
+    </testcase>
+  </testsuite>
+  <testsuite name="loadConfig" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:24" time="0.03" tests="4">
+    <testcase classname="loadConfig usa valores por defecto en desarrollo" name="loadConfig usa valores por defecto en desarrollo" time="0.001">
+    </testcase>
+    <testcase classname="loadConfig lee variables de entorno" name="loadConfig lee variables de entorno" time="0.001">
+    </testcase>
+    <testcase classname="loadConfig exige JWT_SECRET en producción" name="loadConfig exige JWT_SECRET en producción" time="0.007">
+    </testcase>
+    <testcase classname="loadConfig rechaza secretos cortos" name="loadConfig rechaza secretos cortos" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="authenticate" errors="0" failures="0" skipped="0" timestamp="2026-09-29T07:17:24" time="0.029" tests="11">
+    <testcase classname="authenticate sin encabezado -&gt; 401" name="authenticate sin encabezado -&gt; 401" time="0.001">
+    </testcase>
+    <testcase classname="authenticate esquema distinto de Bearer -&gt; 401" name="authenticate esquema distinto de Bearer -&gt; 401" time="0.001">
+    </testcase>
+    <testcase classname="authenticate token válido -&gt; agrega req.user" name="authenticate token válido -&gt; agrega req.user" time="0">
+    </testcase>
+    <testcase classname="authenticate token inválido -&gt; propaga el error" name="authenticate token inválido -&gt; propaga el error" time="0">
+    </testcase>
+    <testcase classname="authorize permite el rol autorizado" name="authorize permite el rol autorizado" time="0">
+    </testcase>
+    <testcase classname="authorize rechaza otro rol con 403" name="authorize rechaza otro rol con 403" time="0">
+    </testcase>
+    <testcase classname="authorize sin usuario autenticado -&gt; 401" name="authorize sin usuario autenticado -&gt; 401" time="0">
+    </testcase>
+    <testcase classname="errorHandler notFound genera un 404" name="errorHandler notFound genera un 404" time="0">
+    </testcase>
+    <testcase classname="errorHandler AppError con detalles" name="errorHandler AppError con detalles" time="0.001">
+    </testcase>
+    <testcase classname="errorHandler errores inesperados -&gt; 500 genérico sin filtrar detalles internos" name="errorHandler errores inesperados -&gt; 500 genérico sin filtrar detalles internos" time="0.006">
+    </testcase>
+    <testcase classname="errorHandler registra el error en consola fuera del entorno de pruebas" name="errorHandler registra el error en consola fuera del entorno de pruebas" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,364 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/demo/seed.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/demo</a> seed.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>29/29</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>5/5</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>28/28</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+/**
+ * Datos de demostración para la presentación. Todas las empresas, ONG,
+ * personas y direcciones son FICTICIAS. Los correos usan el dominio reservado
+ * ".test" (RFC 2606), que no existe en internet.
+ */
+const PASSWORD_DEMO = 'Demo2026';
+&nbsp;
+const CUENTAS = [
+  { clave: 'admin', rol: 'admin', tipo: 'donante', nombre: 'Andrea Solís', email: 'admin@alimentrega.test', empresa: 'Alimentrega (operación)' },
+  { clave: 'espiga', tipo: 'donante', nombre: 'Laura Méndez', email: 'laura@espigadorada.test', empresa: 'Panadería La Espiga Dorada', rfc: 'EDO150301AB1', telefono: '6140000001' },
+  { clave: 'valle', tipo: 'donante', nombre: 'Jorge Castañeda', email: 'jorge@vallenorte.test', empresa: 'Supermercados Valle Norte', rfc: 'SVN100512CD2', telefono: '6140000002' },
+  { clave: 'rios', tipo: 'donante', nombre: 'Mariana Ríos', email: 'mariana@hermanosrios.test', empresa: 'Frutas y Verduras Hermanos Ríos', telefono: '6140000003' },
+  { clave: 'sierra', tipo: 'donante', nombre: 'Tomás Aguirre', email: 'tomas@sierraalta.test', empresa: 'Lácteos Sierra Alta', telefono: '6140000004' },
+  { clave: 'nido', tipo: 'ong', nombre: 'Rosa Villalobos', email: 'rosa@nidodelnorte.test', empresa: 'Comedor Comunitario Nido del Norte', telefono: '6140000005' },
+  { clave: 'luz', tipo: 'ong', nombre: 'Héctor Prieto', email: 'hector@luzdetarde.test', empresa: 'Casa Hogar Luz de Tarde', telefono: '6140000006' }
+];
+&nbsp;
+// [donante, ong, titulo, categoria, kg, estado final, días atrás]
+const LOTES = [
+  ['espiga', 'nido', 'Pan blanco y bolillo del día anterior', 'panaderia', 38, 'entregado', 13],
+  ['valle', 'luz', 'Abarrotes con empaque dañado (arroz y frijol)', 'abarrotes', 120, 'entregado', 12],
+  ['rios', 'nido', 'Jitomate y calabaza de segunda', 'frutas_verduras', 85, 'entregado', 10],
+  ['sierra', 'luz', 'Yogur y leche próximos a caducar', 'lacteos', 64, 'entregado', 9],
+  ['espiga', 'luz', 'Pan dulce surtido', 'panaderia', 22, 'entregado', 7],
+  ['valle', 'nido', 'Comida preparada del área de rosticería', 'preparados', 30, 'entregado', 6],
+  ['rios', 'luz', 'Manzana y plátano maduro', 'frutas_verduras', 140, 'entregado', 4],
+  ['sierra', 'nido', 'Queso fresco y crema', 'lacteos', 26, 'entregado', 2],
+  ['valle', 'luz', 'Cereales y galletas por cambio de etiqueta', 'abarrotes', 75, 'entregado', 1],
+  ['espiga', 'nido', 'Tortillas de harina y conchas', 'panaderia', 18, 'en_transito', 0],
+  ['rios', 'luz', 'Lechuga, pepino y zanahoria', 'frutas_verduras', 60, 'reservado', 0],
+  ['valle', null, 'Pollo rostizado y guarniciones del día', 'preparados', 25, 'disponible', 0],
+  ['sierra', null, 'Leche entera (48 litros)', 'lacteos', 50, 'disponible', 0],
+  ['rios', null, 'Naranja y toronja para jugo', 'frutas_verduras', 95, 'disponible', 0],
+  ['valle', null, 'Pasta y salsa de tomate en lata abollada', 'abarrotes', 40, 'cancelado', 3]
+];
+&nbsp;
+const DIRECCIONES = {
+  espiga: 'Calle Encino 214, Col. Jardines del Bosque',
+  valle: 'Blvd. Los Álamos 3100, Col. Valle Norte',
+  rios: 'Central de Abastos, Bodega 17',
+  sierra: 'Av. Industrias 880, Parque Industrial Sierra'
+};
+&nbsp;
+const CAMINO = {
+  entregado: ['reservado', 'en_transito', 'entregado'],
+  en_transito: ['reservado', 'en_transito'],
+  reservado: ['reservado'],
+  disponible: [],
+  cancelado: ['cancelado']
+};
+&nbsp;
+const fecha = (diasAtras, horas = 0) =&gt;
+  new Date(Date.now() - diasAtras * 86400000 + horas * 3600000).toISOString().replace('T', ' ').slice(0, 19);
+&nbsp;
+async function seedDemo({ authService, loteService, db }) {
+  const usuarios = {};
+  for (const c of CUENTAS) {
+    const { clave, rol = 'usuario', ...datos } = c;
+    usuarios[clave] = await authService.registrar({ ...datos, password: PASSWORD_DEMO }, { rol });
+  }
+  const actor = (u) =&gt; ({ id: u.id, rol: u.rol, tipo: u.tipo });
+  const setFechaEvento = db.prepare('UPDATE lote_eventos SET creado_en = ? WHERE lote_id = ? AND estado = ?');
+  const setFechaLote = db.prepare('UPDATE lotes SET creado_en = ?, actualizado_en = ? WHERE id = ?');
+  const hoy = new Date();
+&nbsp;
+  LOTES.forEach(([donante, ong, titulo, categoria, kg, estado, dias], i) =&gt; {
+    const caducidad = new Date(hoy.getTime() + (2 - dias + (i % 3)) * 86400000).toISOString().slice(0, 10);
+    const lote = loteService.crear(actor(usuarios[donante]), {
+      titulo, categoria, cantidad_kg: kg, caducidad, direccion: DIRECCIONES[donante]
+    });
+    const pasos = CAMINO[estado];
+    pasos.forEach((paso, k) =&gt; {
+      const quien = paso === 'cancelado' ? usuarios[donante] : usuarios[ong];
+      loteService.cambiarEstado(actor(quien), lote.id, paso);
+      setFechaEvento.run(fecha(dias, 2 + k * 3), lote.id, paso);
+    });
+    setFechaEvento.run(fecha(dias), lote.id, 'disponible');
+    setFechaLote.run(fecha(dias), fecha(dias, pasos.length * 3), lote.id);
+  });
+&nbsp;
+  // La demo arranca con las notificaciones leídas; las nuevas aparecerán en vivo.
+  db.exec('UPDATE notificaciones SET leida = 1');
+&nbsp;
+  return [
+    { etiqueta: 'Empresa donante', descripcion: usuarios.espiga.empresa, email: usuarios.espiga.email, password: PASSWORD_DEMO },
+    { etiqueta: 'ONG', descripcion: usuarios.nido.empresa, email: usuarios.nido.email, password: PASSWORD_DEMO },
+    { etiqueta: 'Administrador', descripcion: usuarios.admin.empresa, email: usuarios.admin.email, password: PASSWORD_DEMO }
+  ];
+}
+&nbsp;
+module.exports = { seedDemo, PASSWORD_DEMO, CUENTAS };
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-09-29T07:17:24.451Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

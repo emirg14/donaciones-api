@@ -4,4 +4,3 @@ reports/
 *.db
 .env
 .scannerwork/
-zap/reportes/*.json

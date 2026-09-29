@@ -1,0 +1,248 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.16.1",
+	"@generated": "Tue, 29 Sept 2026 00:33:45",
+	"site":[ 
+		{
+			"@name": "http://localhost:3000",
+			"@host": "localhost",
+			"@port": "3000",
+			"@ssl": "false",
+			"alerts": [ 
+				{
+					"pluginid": "40024",
+					"alertRef": "40024",
+					"alert": "SQL Injection - SQLite",
+					"name": "SQL Injection - SQLite",
+					"riskcode": "3",
+					"confidence": "2",
+					"riskdesc": "High (Medium)",
+					"desc": "<p>SQL injection may be possible.</p>",
+					"instances":[ 
+						{
+							"id": "6",
+							"uri": "http://localhost:3000/api/donantes/2",
+							"method": "GET",
+							"param": "\u00ABid\u00BB",
+							"attack": "case randomblob(10000000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [14] milliseconds, parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [14] milliseconds, when the original unmodified query with value [2] took [135] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [14] milliseconds, parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [14] milliseconds, when the original unmodified query with value [2] took [135] milliseconds."
+						},
+						{
+							"id": "5",
+							"uri": "http://localhost:3000/api/donantes?page=1&limit=20",
+							"method": "GET",
+							"param": "page",
+							"attack": "case randomblob(100000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [125] milliseconds, parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [125] milliseconds, when the original unmodified query with value [1] took [124] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [125] milliseconds, parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [125] milliseconds, when the original unmodified query with value [1] took [124] milliseconds."
+						},
+						{
+							"id": "2",
+							"uri": "http://localhost:3000/api/donantes/2/rol",
+							"method": "PATCH",
+							"param": "\u00ABid\u00BB",
+							"attack": "case randomblob(1000000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [203] milliseconds, parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [203] milliseconds, when the original unmodified query with value [2] took [103] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [203] milliseconds, parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [203] milliseconds, when the original unmodified query with value [2] took [103] milliseconds."
+						},
+						{
+							"id": "3",
+							"uri": "http://localhost:3000/api/auth/registro",
+							"method": "POST",
+							"param": "email",
+							"attack": "case randomblob(1000000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [2] milliseconds, parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [2] milliseconds, when the original unmodified query with value [zaproxy@example.com] took [2] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [2] milliseconds, parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [2] milliseconds, when the original unmodified query with value [zaproxy@example.com] took [2] milliseconds."
+						},
+						{
+							"id": "4",
+							"uri": "http://localhost:3000/api/auth/registro",
+							"method": "POST",
+							"param": "password",
+							"attack": "case randomblob(10000000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [9] milliseconds, parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [9] milliseconds, when the original unmodified query with value [ZAP] took [103] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [9] milliseconds, parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [9] milliseconds, when the original unmodified query with value [ZAP] took [103] milliseconds."
+						},
+						{
+							"id": "7",
+							"uri": "http://localhost:3000/api/auth/registro",
+							"method": "POST",
+							"param": "rfc",
+							"attack": "case randomblob(100000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [198] milliseconds, parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [198] milliseconds, when the original unmodified query with value [ANO010101AB1] took [6] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [198] milliseconds, parameter value [case randomblob(100000) when not null then 1 else 1 end ], which caused the request to take [198] milliseconds, when the original unmodified query with value [ANO010101AB1] took [6] milliseconds."
+						},
+						{
+							"id": "8",
+							"uri": "http://localhost:3000/api/auth/registro",
+							"method": "POST",
+							"param": "telefono",
+							"attack": "case randomblob(1000000) when not null then 1 else 1 end ",
+							"evidence": "The query time is controllable using parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [205] milliseconds, parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [205] milliseconds, when the original unmodified query with value [6141234567] took [2] milliseconds.",
+							"otherinfo": "The query time is controllable using parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [205] milliseconds, parameter value [case randomblob(1000000) when not null then 1 else 1 end ], which caused the request to take [205] milliseconds, when the original unmodified query with value [6141234567] took [2] milliseconds."
+						}
+					],
+					"count": "7",
+					"solution": "<p>Do not trust client side input, even if there is client side validation in place.</p><p>In general, type check all data on the server side.</p><p>If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'</p><p>If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.</p><p>If database Stored Procedures can be used, use them.</p><p>Do *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!</p><p>Do not create dynamic SQL queries using simple string concatenation.</p><p>Escape all data received from the client.</p><p>Apply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.</p><p>Apply the principle of least privilege by using the least privileged database user possible.</p><p>In particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.</p><p>Grant the minimum database access that is necessary for the application.</p>",
+					"otherinfo": "<p>The query time is controllable using parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [14] milliseconds, parameter value [case randomblob(10000000) when not null then 1 else 1 end ], which caused the request to take [14] milliseconds, when the original unmodified query with value [2] took [135] milliseconds.</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</p>",
+					"cweid": "89",
+					"wascid": "19",
+					"sourceid": "1650"
+				},
+				{
+					"pluginid": "40034",
+					"alertRef": "40034-2",
+					"alert": ".env Information Leak",
+					"name": ".env Information Leak",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>One or more .env files seems to have been located on the server. These files often expose infrastructure or administrative account credentials, API or APP keys, or other sensitive configuration information.</p>",
+					"instances":[ 
+						{
+							"id": "14",
+							"uri": "http://localhost:3000/api/donantes/.env",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 401 Unauthorized",
+							"otherinfo": "Based on response status code the .env file may be protected by an authentication or authorization mechanism."
+						},
+						{
+							"id": "15",
+							"uri": "http://localhost:3000/api/donantes/2/.env",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 401 Unauthorized",
+							"otherinfo": "Based on response status code the .env file may be protected by an authentication or authorization mechanism."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure the .env file is not accessible.</p>",
+					"otherinfo": "<p>Based on response status code the .env file may be protected by an authentication or authorization mechanism.</p>",
+					"reference": "<p>https://www.google.com/search?q=db_password+filetype%3Aenv</p><p>https://mobile.twitter.com/svblxyz/status/1045013939904532482</p>",
+					"cweid": "215",
+					"wascid": "13",
+					"sourceid": "3126"
+				},
+				{
+					"pluginid": "40032",
+					"alertRef": "40032-2",
+					"alert": ".htaccess Information Leak",
+					"name": ".htaccess Information Leak",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>htaccess files can be used to alter the configuration of the Apache Web Server software to enable/disable additional functionality and features that the Apache Web Server software has to offer.</p>",
+					"instances":[ 
+						{
+							"id": "12",
+							"uri": "http://localhost:3000/api/donantes/.htaccess",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 401 Unauthorized",
+							"otherinfo": "Based on response status code htaccess file may be protected by an authentication or authorization mechanism."
+						},
+						{
+							"id": "13",
+							"uri": "http://localhost:3000/api/donantes/2/.htaccess",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 401 Unauthorized",
+							"otherinfo": "Based on response status code htaccess file may be protected by an authentication or authorization mechanism."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure the .htaccess file is not accessible.</p>",
+					"otherinfo": "<p>Based on response status code htaccess file may be protected by an authentication or authorization mechanism.</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess</p><p>https://httpd.apache.org/docs/2.4/howto/htaccess.html</p>",
+					"cweid": "94",
+					"wascid": "14",
+					"sourceid": "3115"
+				},
+				{
+					"pluginid": "10111",
+					"alertRef": "10111",
+					"alert": "Authentication Request Identified",
+					"name": "Authentication Request Identified",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
+					"instances":[ 
+						{
+							"id": "0",
+							"uri": "http://localhost:3000/api/auth/registro",
+							"method": "POST",
+							"param": "email",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password"
+						},
+						{
+							"id": "1",
+							"uri": "http://localhost:3000/api/auth/login",
+							"method": "POST",
+							"param": "email",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password"
+						}
+					],
+					"count": "2",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p>userParam=email</p><p>userValue=zaproxy@example.com</p><p>passwordParam=password</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "3"
+				},
+				{
+					"pluginid": "40029",
+					"alertRef": "40029-2",
+					"alert": "Trace.axd Information Leak",
+					"name": "Trace.axd Information Leak",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The ASP.NET Trace Viewer (trace.axd) was found to be available. This component can leak a significant amount of valuable information.</p>",
+					"instances":[ 
+						{
+							"id": "10",
+							"uri": "http://localhost:3000/api/donantes/2/trace.axd",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 401 Unauthorized",
+							"otherinfo": "Based on response status code Trace Viewer may be protected by an authentication or authorization mechanism."
+						},
+						{
+							"id": "9",
+							"uri": "http://localhost:3000/api/donantes/trace.axd",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 401 Unauthorized",
+							"otherinfo": "Based on response status code Trace Viewer may be protected by an authentication or authorization mechanism."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Consider whether or not Trace Viewer is actually required in production, if it isn't then disable it. If it is then ensure access to it requires authentication and authorization.</p>",
+					"otherinfo": "<p>Based on response status code Trace Viewer may be protected by an authentication or authorization mechanism.</p>",
+					"reference": "<p>https://msdn.microsoft.com/en-us/library/bb386420.aspx</p><p>https://msdn.microsoft.com/en-us/library/wwh16c6c.aspx</p><p>https://www.dotnetperls.com/trace</p>",
+					"cweid": "215",
+					"wascid": "13",
+					"sourceid": "3104"
+				}
+			]
+		}
+	],
+	"sequences":[
+	]
+
+}
