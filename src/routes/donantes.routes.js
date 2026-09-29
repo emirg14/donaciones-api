@@ -3,7 +3,7 @@
 const express = require('express');
 const { authenticate, authorize } = require('../middleware/auth');
 const { AppError } = require('../utils/errors');
-const { isValidRol, parseId } = require('../utils/validators');
+const { isValidRol, parseId, parsePagination } = require('../utils/validators');
 
 /**
  * Gestión de donantes (protegida con JWT):
@@ -23,9 +23,8 @@ function createDonantesRouter({ authService, repo }) {
   };
 
   router.get('/', authorize('admin'), (req, res) => {
-    const limit = Math.min(Math.max(Number.parseInt(req.query.limit, 10) || 20, 1), 100);
-    const page = Math.max(Number.parseInt(req.query.page, 10) || 1, 1);
-    const donantes = repo.findAll({ limit, offset: (page - 1) * limit });
+    const { limit, page, offset } = parsePagination(req.query);
+    const donantes = repo.findAll({ limit, offset });
     res.json({ donantes, page, limit, total: repo.count() });
   });
 

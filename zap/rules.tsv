@@ -1,0 +1,11 @@
+# Configuración de reglas para zap-api-scan.py en el pipeline (FAIL detiene el despliegue)
+40012	FAIL	(Cross Site Scripting - Reflected)
+40014	FAIL	(Cross Site Scripting - Persistent)
+40018	FAIL	(SQL Injection)
+40019	FAIL	(SQL Injection - MySQL)
+40022	FAIL	(SQL Injection - PostgreSQL)
+90019	FAIL	(Server Side Code Injection)
+90020	FAIL	(Remote OS Command Injection)
+# 40024 (SQLi SQLite basada en tiempo): falso positivo verificado manualmente; se deja como advertencia
+40024	WARN	(SQL Injection - SQLite)
+10104	IGNORE	(User Agent Fuzzer - informativo)

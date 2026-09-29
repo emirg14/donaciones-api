@@ -3,7 +3,8 @@ const {
   validateRegistro,
   validateLogin,
   isValidRol,
-  parseId
+  parseId,
+  parsePagination
 } = require('../../src/utils/validators');
 const { donanteValido } = require('../helpers');
 
@@ -105,5 +106,18 @@ describe('isValidRol y parseId', () => {
     ['abc', null]
   ])('parseId(%p) = %p', (raw, esperado) => {
     expect(parseId(raw)).toBe(esperado);
+  });
+});
+
+describe('parsePagination (regresión del hallazgo de OWASP ZAP)', () => {
+  test('valores por defecto', () => {
+    expect(parsePagination()).toEqual({ limit: 20, page: 1, offset: 0 });
+  });
+
+  test('acota página y límite a rangos seguros', () => {
+    expect(parsePagination({ page: '4750925297435195125', limit: '20' })).toEqual({ limit: 20, page: 10000, offset: 199980 });
+    expect(parsePagination({ page: '99999999999999999999999', limit: '1e9' })).toEqual({ limit: 1, page: 10000, offset: 9999 });
+    expect(parsePagination({ page: '3', limit: '500' })).toEqual({ limit: 100, page: 3, offset: 200 });
+    expect(parsePagination({ page: '-2', limit: 'abc' })).toEqual({ limit: 20, page: 1, offset: 0 });
   });
 });

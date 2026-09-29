@@ -166,11 +166,11 @@ jobs:
         run: |
           mkdir -p zap-out && chmod 777 zap-out
           docker run --rm --network host \
-            -v "$PWD/docs:/zap/wrk/docs:ro" -v "$PWD/zap-out:/zap/wrk/out" \
+            -v "$PWD/docs:/zap/wrk/docs:ro" -v "$PWD/zap:/zap/wrk/zap:ro" -v "$PWD/zap-out:/zap/wrk/out" \
             -e ZAP_AUTH_HEADER=Authorization -e ZAP_AUTH_HEADER_VALUE="Bearer $ZAP_TOKEN" \
             ghcr.io/zaproxy/zaproxy:stable zap-api-scan.py \
               -t /zap/wrk/docs/openapi.yaml -f openapi -O http://localhost:3000 \
-              -r out/zap-reporte.html -J out/zap-reporte.json -a || code=$?
+              -c zap/rules.tsv -r out/zap-reporte.html -J out/zap-reporte.json -a || code=$?
           # 0 = sin alertas, 2 = solo advertencias; 1 = alertas FAIL (se detiene el pipeline)
           if [ "${code:-0}" = "1" ] || [ "${code:-0}" -gt 2 ]; then exit 1; fi
 

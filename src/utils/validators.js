@@ -77,7 +77,26 @@ function isValidRol(rol) {
 
 function parseId(raw) {
   const id = Number(raw);
-  return Number.isInteger(id) && id > 0 ? id : null;
+  return Number.isSafeInteger(id) && id > 0 ? id : null;
+}
+
+const MAX_LIMIT = 100;
+const MAX_PAGE = 10000;
+
+/**
+ * Normaliza la paginación a enteros acotados. Corrige el hallazgo de OWASP ZAP:
+ * un "page" gigantesco (p. ej. 4750925297435195125) generaba un OFFSET fuera
+ * del rango de SQLite y un error 500.
+ */
+function parsePagination(query = {}) {
+  const clamp = (raw, def, max) => {
+    const n = Number.parseInt(raw, 10);
+    if (Number.isNaN(n) || n < 1) return def;
+    return Math.min(n, max); // valores gigantes se acotan al máximo permitido
+  };
+  const limit = clamp(query.limit, 20, MAX_LIMIT);
+  const page = clamp(query.page, 1, MAX_PAGE);
+  return { limit, page, offset: (page - 1) * limit };
 }
 
 module.exports = {
@@ -86,5 +105,6 @@ module.exports = {
   validateRegistro,
   validateLogin,
   isValidRol,
-  parseId
+  parseId,
+  parsePagination
 };

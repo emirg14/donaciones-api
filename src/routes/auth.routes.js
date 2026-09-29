@@ -21,7 +21,7 @@ function createAuthRouter({ authService, repo }) {
     asyncHandler(async (req, res) => {
       const { errors, value } = validateRegistro(req.body);
       if (errors.length) throw new AppError(400, 'Datos de registro inválidos', errors);
-      // El rol nunca se toma del cuerpo de la petición: todo registro público es "usuario".
+      // El rol nunca se toma del cuerpo de la petición: cada registro público es "usuario".
       const donante = await authService.registrar(value);
       res.status(201).location(`/api/donantes/${donante.id}`).json({ donante });
     })

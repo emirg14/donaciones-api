@@ -31,6 +31,14 @@ describe('API de donantes (roles admin/usuario)', () => {
       expect(res.body).toMatchObject({ page: 1, limit: 100 });
     });
 
+    test('regresión ZAP: página gigantesca ya no provoca error 500', async () => {
+      const res = await request(ctx.app)
+        .get('/api/donantes?page=4750925297435195125.owasp.org&limit=20')
+        .set(auth(adminToken));
+      expect(res.status).toBe(200);
+      expect(res.body.donantes).toEqual([]);
+    });
+
     test('usuario normal -> 403', async () => {
       const res = await request(ctx.app).get('/api/donantes').set(auth(userToken));
       expect(res.status).toBe(403);
