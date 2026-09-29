@@ -1,0 +1,11 @@
+node_modules
+coverage
+reports
+tests
+docs
+zap
+.git
+.github
+*.md
+.env
+.scannerwork

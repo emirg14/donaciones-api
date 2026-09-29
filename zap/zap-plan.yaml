@@ -1,0 +1,71 @@
+# Plan de OWASP ZAP (Automation Framework) para escanear la API.
+# Uso local:  ZAP_TOKEN=<jwt admin> TARGET=http://localhost:3000 ./zap.sh -cmd -autorun zap/zap-plan.yaml
+env:
+  contexts:
+    - name: donaciones-api
+      urls:
+        - ${TARGET}
+      includePaths:
+        - ${TARGET}.*
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+  vars:
+    TARGET: http://localhost:3000
+
+jobs:
+  # Agrega el JWT de administrador a cada petición para escanear también rutas protegidas
+  - type: replacer
+    parameters:
+      deleteAllRules: false
+    rules:
+      - description: JWT admin
+        url: ""
+        matchType: req_header
+        matchString: Authorization
+        matchRegex: false
+        replacementString: Bearer ${ZAP_TOKEN}
+        tokenProcessing: false
+
+  # Importa la especificación OpenAPI para descubrir todos los endpoints
+  - type: openapi
+    parameters:
+      apiFile: ${API_FILE}
+      targetUrl: ${TARGET}
+      context: donaciones-api
+
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+
+  # Escaneo activo: incluye reglas de SQL Injection (40018-40024), XSS (40012/40014/40026),
+  # inyección de comandos, path traversal, SSTI, etc.
+  - type: activeScan
+    parameters:
+      context: donaciones-api
+      maxScanDurationInMins: 20
+      threadPerHost: 4
+    policyDefinition:
+      defaultStrength: medium
+      defaultThreshold: low
+
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: ${REPORT_DIR}
+      reportFile: zap-reporte
+      reportTitle: OWASP ZAP - Donaciones API
+    risks: [info, low, medium, high]
+    confidences: [falsepositive, low, medium, high, confirmed]
+
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: ${REPORT_DIR}
+      reportFile: zap-reporte
+    risks: [info, low, medium, high]

@@ -1,0 +1,65 @@
+'use strict';
+
+const express = require('express');
+const { authenticate, authorize } = require('../middleware/auth');
+const { AppError } = require('../utils/errors');
+const { isValidRol, parseId } = require('../utils/validators');
+
+/**
+ * Gestión de donantes (protegida con JWT):
+ *   GET    /api/donantes           -> admin: lista paginada
+ *   GET    /api/donantes/:id       -> admin o el propio donante
+ *   PATCH  /api/donantes/:id/rol   -> admin: cambia el rol
+ *   DELETE /api/donantes/:id       -> admin: elimina
+ */
+function createDonantesRouter({ authService, repo }) {
+  const router = express.Router();
+  router.use(authenticate(authService));
+
+  const requireId = (req) => {
+    const id = parseId(req.params.id);
+    if (!id) throw new AppError(400, 'Identificador inválido');
+    return id;
+  };
+
+  router.get('/', authorize('admin'), (req, res) => {
+    const limit = Math.min(Math.max(Number.parseInt(req.query.limit, 10) || 20, 1), 100);
+    const page = Math.max(Number.parseInt(req.query.page, 10) || 1, 1);
+    const donantes = repo.findAll({ limit, offset: (page - 1) * limit });
+    res.json({ donantes, page, limit, total: repo.count() });
+  });
+
+  router.get('/:id', authorize('admin', 'usuario'), (req, res) => {
+    const id = requireId(req);
+    // Un usuario solo puede consultar su propio registro (evita IDOR).
+    if (req.user.rol !== 'admin' && req.user.id !== id) {
+      throw new AppError(403, 'No tienes permisos para esta acción');
+    }
+    const donante = repo.findById(id);
+    if (!donante) throw new AppError(404, 'Donante no encontrado');
+    res.json({ donante });
+  });
+
+  router.patch('/:id/rol', authorize('admin'), (req, res) => {
+    const id = requireId(req);
+    const { rol } = req.body || {};
+    if (!isValidRol(rol)) throw new AppError(400, 'Rol inválido: use "admin" o "usuario"');
+    if (id === req.user.id && rol !== 'admin') {
+      throw new AppError(400, 'Un administrador no puede quitarse su propio rol');
+    }
+    const donante = repo.updateRol(id, rol);
+    if (!donante) throw new AppError(404, 'Donante no encontrado');
+    res.json({ donante });
+  });
+
+  router.delete('/:id', authorize('admin'), (req, res) => {
+    const id = requireId(req);
+    if (id === req.user.id) throw new AppError(400, 'Un administrador no puede eliminarse a sí mismo');
+    if (!repo.remove(id)) throw new AppError(404, 'Donante no encontrado');
+    res.status(204).end();
+  });
+
+  return router;
+}
+
+module.exports = { createDonantesRouter };
