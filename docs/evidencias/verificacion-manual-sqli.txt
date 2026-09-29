@@ -1,0 +1,15 @@
+Verificación manual de la alerta 40024 "SQL Injection - SQLite" (OWASP ZAP)
+Fecha: 29/09/2026 - servidor en modo production, 20 peticiones secuenciales por caso
+
+/api/donantes/2                                   HTTP 200  mediana 1.0 ms  máx 5.6 ms
+/api/donantes?page=2&limit=20                     HTTP 200  mediana 1.2 ms  máx 5.2 ms
+/api/donantes/<case randomblob(100000000)...>     HTTP 400  mediana 1.1 ms  máx 3.6 ms
+/api/donantes?page=<case randomblob(100000000)..> HTTP 200  mediana 1.1 ms  máx 3.2 ms
+
+POST /api/auth/registro válido (bcrypt 12 rondas)  HTTP 201  mediana 341 ms
+POST /api/auth/registro con payload SQLi           HTTP 400  mediana 1 ms
+
+Conclusión: randomblob(100000000) tardaría cientos de ms si SQLite lo ejecutara; la
+respuesta tarda ~1 ms porque el valor se rechaza en la validación (400) o se convierte
+a entero antes de llegar a la consulta parametrizada. La variación de tiempos que vio
+ZAP proviene de la carga de CPU de bcrypt en peticiones concurrentes -> FALSO POSITIVO.

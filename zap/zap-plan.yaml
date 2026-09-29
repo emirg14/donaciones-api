@@ -1,5 +1,9 @@
 # Plan de OWASP ZAP (Automation Framework) para escanear la API.
-# Uso local:  ZAP_TOKEN=<jwt admin> TARGET=http://localhost:3000 ./zap.sh -cmd -autorun zap/zap-plan.yaml
+# Uso local:
+#   export ZAP_AUTH_HEADER=Authorization
+#   export ZAP_AUTH_HEADER_VALUE="Bearer <jwt de admin>"   # ZAP lo agrega a TODAS las peticiones
+#   TARGET=http://localhost:3000 API_FILE=$PWD/docs/openapi.yaml REPORT_DIR=$PWD/zap/reportes \
+#     ./zap.sh -cmd -autorun zap/zap-plan.yaml
 env:
   contexts:
     - name: donaciones-api
@@ -15,19 +19,6 @@ env:
     TARGET: http://localhost:3000
 
 jobs:
-  # Agrega el JWT de administrador a cada petición para escanear también rutas protegidas
-  - type: replacer
-    parameters:
-      deleteAllRules: false
-    rules:
-      - description: JWT admin
-        url: ""
-        matchType: req_header
-        matchString: Authorization
-        matchRegex: false
-        replacementString: Bearer ${ZAP_TOKEN}
-        tokenProcessing: false
-
   # Importa la especificación OpenAPI para descubrir todos los endpoints
   - type: openapi
     parameters:
