@@ -4,8 +4,7 @@ module.exports = {
   roots: ['<rootDir>/tests'],
   setupFiles: ['<rootDir>/tests/setupEnv.js'],
   collectCoverageFrom: [
-    'src/**/*.js',
-    '!src/server.js' // punto de entrada: solo levanta el servidor HTTP
+    'src/**/*.js' // los puntos de entrada (server.mjs, demo.mjs) solo levantan el servidor
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'text-summary', 'lcov', 'html', 'json-summary'],

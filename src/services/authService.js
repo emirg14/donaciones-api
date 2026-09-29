@@ -15,7 +15,7 @@ function createAuthService({ repo, config }) {
   const dummyHash = bcrypt.hashSync('dummy-password-for-timing', config.bcryptRounds);
 
   function signToken(user) {
-    return jwt.sign({ sub: String(user.id), rol: user.rol, email: user.email }, secret, {
+    return jwt.sign({ sub: String(user.id), rol: user.rol, tipo: user.tipo, email: user.email }, secret, {
       algorithm: 'HS256',
       expiresIn,
       issuer,

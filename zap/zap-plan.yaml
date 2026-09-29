@@ -26,6 +26,13 @@ jobs:
       targetUrl: ${TARGET}
       context: donaciones-api
 
+  # Recorre la página web (HTML, CSS y JS) para revisar también sus encabezados
+  - type: spider
+    parameters:
+      context: donaciones-api
+      url: ${TARGET}/
+      maxDuration: 1
+
   - type: passiveScan-wait
     parameters:
       maxDuration: 5

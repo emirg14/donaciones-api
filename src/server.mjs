@@ -1,9 +1,8 @@
-'use strict';
+// Punto de entrada del servidor (módulo ES para poder usar top-level await).
+import { loadConfig } from './config/index.js';
+import { createApp } from './app.js';
 
-const { loadConfig } = require('./config');
-const { createApp } = require('./app');
-
-async function main() {
+try {
   const config = loadConfig();
   const app = createApp({ config });
   await app.locals.authService.seedAdmin();
@@ -15,9 +14,7 @@ async function main() {
   const shutdown = () => server.close(() => process.exit(0));
   process.on('SIGTERM', shutdown);
   process.on('SIGINT', shutdown);
-}
-
-main().catch((err) => {
+} catch (err) {
   console.error('No se pudo iniciar el servidor:', err.message);
   process.exit(1);
-});
+}

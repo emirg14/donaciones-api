@@ -3,7 +3,7 @@
 const express = require('express');
 const { authenticate, authorize } = require('../middleware/auth');
 const { AppError } = require('../utils/errors');
-const { isValidRol, parseId, parsePagination } = require('../utils/validators');
+const { isValidRol, parseId, parsePagination, TIPOS_CUENTA } = require('../utils/validators');
 
 /**
  * Gestión de donantes (protegida con JWT):
@@ -24,8 +24,9 @@ function createDonantesRouter({ authService, repo }) {
 
   router.get('/', authorize('admin'), (req, res) => {
     const { limit, page, offset } = parsePagination(req.query);
-    const donantes = repo.findAll({ limit, offset });
-    res.json({ donantes, page, limit, total: repo.count() });
+    const tipo = TIPOS_CUENTA.includes(req.query.tipo) ? req.query.tipo : null;
+    const donantes = repo.findAll({ limit, offset, tipo });
+    res.json({ donantes, page, limit, total: repo.count({ tipo }) });
   });
 
   router.get('/:id', authorize('admin', 'usuario'), (req, res) => {

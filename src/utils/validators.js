@@ -9,7 +9,12 @@ const NOMBRE_RE = /^[\p{L}\p{M}\s.'-]{2,100}$/u;
 const EMPRESA_RE = /^[\p{L}\p{M}\d\s.,&()'-]{2,150}$/u;
 const RFC_RE = /^[A-ZÑ&]{3,4}\d{6}[A-Z\d]{3}$/;
 const TELEFONO_RE = /^\d{10}$/;
+const TEXTO_RE = /^[\p{L}\p{M}\d\s.,&()'#/°:-]+$/u;
+const FECHA_RE = /^\d{4}-\d{2}-\d{2}$/;
 const ROLES = Object.freeze(['admin', 'usuario']);
+const TIPOS_CUENTA = Object.freeze(['donante', 'ong']);
+const CATEGORIAS = Object.freeze(['frutas_verduras', 'panaderia', 'lacteos', 'abarrotes', 'preparados', 'otros']);
+const ESTADOS = Object.freeze(['disponible', 'reservado', 'en_transito', 'entregado', 'cancelado']);
 
 const isString = (v) => typeof v === 'string';
 
@@ -40,7 +45,8 @@ function validateRegistro(body = {}) {
     password: body.password,
     empresa: isString(body.empresa) ? body.empresa.trim() : undefined,
     rfc: isString(body.rfc) ? body.rfc.trim().toUpperCase() : undefined,
-    telefono: isString(body.telefono) ? body.telefono.trim() : undefined
+    telefono: isString(body.telefono) ? body.telefono.trim() : undefined,
+    tipo: body.tipo === undefined ? 'donante' : body.tipo
   };
 
   if (!isString(value.nombre) || !NOMBRE_RE.test(value.nombre)) {
@@ -58,6 +64,9 @@ function validateRegistro(body = {}) {
   }
   if (value.telefono !== undefined && !TELEFONO_RE.test(value.telefono)) {
     errors.push('El teléfono debe tener 10 dígitos');
+  }
+  if (!TIPOS_CUENTA.includes(value.tipo)) {
+    errors.push('El tipo de cuenta debe ser "donante" u "ong"');
   }
 
   return { errors, value };
@@ -78,6 +87,64 @@ function isValidRol(rol) {
 function parseId(raw) {
   const id = Number(raw);
   return Number.isSafeInteger(id) && id > 0 ? id : null;
+}
+
+const toIsoDate = (d) => d.toISOString().slice(0, 10);
+const pad = (n) => String(n).padStart(2, '0');
+/** Fecha local (zona horaria del servidor) en formato AAAA-MM-DD. */
+const toLocalIsoDate = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+function isValidIsoDate(str) {
+  if (!isString(str) || !FECHA_RE.test(str)) return false;
+  const d = new Date(`${str}T00:00:00Z`);
+  return !Number.isNaN(d.getTime()) && toIsoDate(d) === str;
+}
+
+function checkTexto(valor, campo, min, max, errors) {
+  if (!isString(valor) || valor.length < min || valor.length > max || !TEXTO_RE.test(valor)) {
+    errors.push(`${campo} es obligatorio (${min}-${max} caracteres, sin símbolos especiales)`);
+  }
+}
+
+/**
+ * Valida un lote de alimentos. "hoy" se inyecta para que las pruebas sean
+ * deterministas. La caducidad debe estar entre hoy y un año a partir de hoy.
+ */
+function validateLote(body = {}, hoy = new Date()) {
+  const errors = [];
+  const value = {
+    titulo: isString(body.titulo) ? body.titulo.trim() : body.titulo,
+    categoria: body.categoria,
+    cantidad_kg: typeof body.cantidad_kg === 'string' ? Number(body.cantidad_kg) : body.cantidad_kg,
+    caducidad: body.caducidad,
+    direccion: isString(body.direccion) ? body.direccion.trim() : body.direccion,
+    lat: body.lat === undefined || body.lat === null || body.lat === '' ? null : Number(body.lat),
+    lng: body.lng === undefined || body.lng === null || body.lng === '' ? null : Number(body.lng)
+  };
+
+  checkTexto(value.titulo, 'La descripción del lote', 3, 120, errors);
+  checkTexto(value.direccion, 'La dirección de recolección', 5, 200, errors);
+  if (!CATEGORIAS.includes(value.categoria)) errors.push('La categoría no es válida');
+  if (typeof value.cantidad_kg !== 'number' || !Number.isFinite(value.cantidad_kg) ||
+      value.cantidad_kg <= 0 || value.cantidad_kg > 10000) {
+    errors.push('La cantidad debe ser un número entre 0.1 y 10,000 kg');
+  } else {
+    value.cantidad_kg = Math.round(value.cantidad_kg * 10) / 10;
+  }
+  if (isValidIsoDate(value.caducidad)) {
+    const min = toLocalIsoDate(hoy);
+    const max = toLocalIsoDate(new Date(hoy.getTime() + 365 * 24 * 3600 * 1000));
+    if (value.caducidad < min || value.caducidad > max) {
+      errors.push('La fecha de caducidad debe estar entre hoy y un año a partir de hoy');
+    }
+  } else {
+    errors.push('La fecha de caducidad debe tener el formato AAAA-MM-DD');
+  }
+  const badCoord = (n, lim) => n !== null && (!Number.isFinite(n) || Math.abs(n) > lim);
+  if (badCoord(value.lat, 90) || badCoord(value.lng, 180) || (value.lat === null) !== (value.lng === null)) {
+    errors.push('Las coordenadas no son válidas');
+  }
+  return { errors, value };
 }
 
 const MAX_LIMIT = 100;
@@ -101,6 +168,12 @@ function parsePagination(query = {}) {
 
 module.exports = {
   ROLES,
+  TIPOS_CUENTA,
+  CATEGORIAS,
+  ESTADOS,
+  validateLote,
+  isValidIsoDate,
+  toLocalIsoDate,
   validatePassword,
   validateRegistro,
   validateLogin,

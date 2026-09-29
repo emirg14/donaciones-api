@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Donaciones API - Registro de donantes
-  version: 1.0.0
-  description: Microservicio de autenticación (JWT) y registro de personas donantes con roles admin/usuario.
+  title: Alimentrega API - Donación de alimentos
+  version: 1.1.0
+  description: Autenticación JWT con roles admin/usuario, registro de empresas donantes y ONG, lotes de alimentos con trazabilidad, notificaciones y reportes de impacto. Alimentrega es una empresa ficticia (proyecto académico).
 servers:
   - url: http://localhost:3000
 components:
@@ -22,6 +22,24 @@ components:
         empresa: { type: string, example: Alimentos del Norte }
         rfc: { type: string, example: ANO010101AB1 }
         telefono: { type: string, example: '6141234567' }
+        tipo: { type: string, enum: [donante, ong], example: donante }
+    Lote:
+      type: object
+      required: [titulo, categoria, cantidad_kg, caducidad, direccion]
+      properties:
+        titulo: { type: string, example: Pan dulce del día }
+        categoria: { type: string, enum: [frutas_verduras, panaderia, lacteos, abarrotes, preparados, otros] }
+        cantidad_kg: { type: number, example: 25 }
+        caducidad: { type: string, format: date, example: '2026-10-01' }
+        direccion: { type: string, example: 'Calle Encino 214, Col. Centro' }
+        lat: { type: number, example: 28.6353 }
+        lng: { type: number, example: -106.0889 }
+    CambioEstado:
+      type: object
+      required: [estado]
+      properties:
+        estado: { type: string, enum: [disponible, reservado, en_transito, entregado, cancelado] }
+        nota: { type: string, example: Recibido completo }
     Login:
       type: object
       required: [email, password]
@@ -110,5 +128,79 @@ paths:
         content:
           application/json:
             schema: { $ref: '#/components/schemas/Rol' }
+      responses:
+        '200': { description: OK }
+  /api/lotes:
+    get:
+      summary: Listar lotes según el perfil (donante, ONG o admin)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: estado, in: query, schema: { type: string, example: disponible } }
+      responses:
+        '200': { description: OK }
+    post:
+      summary: Publicar un lote (empresa donante)
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Lote' }
+      responses:
+        '201': { description: Creado }
+        '403': { description: Solo empresas donantes }
+  /api/lotes/{id}:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: integer, example: 12 } }
+    get:
+      summary: Detalle del lote con historial (trazabilidad)
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: OK }
+  /api/lotes/{id}/estado:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: integer, example: 12 } }
+    patch:
+      summary: Cambiar el estado del lote
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CambioEstado' }
+      responses:
+        '200': { description: OK }
+  /api/notificaciones:
+    get:
+      summary: Notificaciones del usuario
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: OK }
+  /api/notificaciones/leer:
+    post:
+      summary: Marcar notificaciones como leídas
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: OK }
+  /api/reportes/impacto:
+    get:
+      summary: Métricas de impacto según el perfil
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: OK }
+  /api/reportes/impacto.csv:
+    get:
+      summary: Reporte CSV de todos los lotes (solo admin)
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Archivo CSV }
+  /api/public/impacto:
+    get:
+      summary: Impacto agregado público (sin datos personales)
+      responses:
+        '200': { description: OK }
+  /api/public/config:
+    get:
+      summary: Configuración pública (modo demostración)
       responses:
         '200': { description: OK }

@@ -16,6 +16,16 @@ module.exports = [
     }
   },
   {
+    // Puntos de entrada del servidor (módulos ES)
+    files: ['src/**/*.mjs'],
+    languageOptions: { ecmaVersion: 2023, sourceType: 'module', globals: { ...globals.node } }
+  },
+  {
+    // Página web (navegador, módulos ES)
+    files: ['public/**/*.js'],
+    languageOptions: { ecmaVersion: 2023, sourceType: 'module', globals: { ...globals.browser } }
+  },
+  {
     files: ['tests/**/*.js'],
     languageOptions: { globals: { ...globals.jest } }
   }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Alimentrega">
+  <rect width="48" height="48" rx="13" fill="#1F6F4A"/>
+  <path d="M12.5 33.5C12 22 19.5 14 35.5 13c.5 15.5-7.5 23-19 22.5" fill="#FFFFFF"/>
+  <path d="M13 35.5c4.5-7 10-11.5 17-15" stroke="#1F6F4A" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  <circle cx="35" cy="34.5" r="4.2" fill="#F28C28"/>
+</svg>

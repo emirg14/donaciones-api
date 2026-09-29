@@ -1,19 +1,20 @@
 {
   "name": "donaciones-api",
   "version": "1.0.0",
-  "description": "Microservicio de autenticación y registro de donantes - Plataforma de donaciones de alimentos",
-  "main": "src/server.js",
+  "description": "Alimentrega (empresa ficticia): plataforma de donación de alimentos - API con JWT, roles y página web de demostración",
+  "main": "src/server.mjs",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
   },
   "scripts": {
-    "start": "node --disable-warning=ExperimentalWarning src/server.js",
-    "dev": "node --watch --disable-warning=ExperimentalWarning src/server.js",
+    "start": "node --disable-warning=ExperimentalWarning src/server.mjs",
+    "dev": "node --watch --disable-warning=ExperimentalWarning src/server.mjs",
     "lint": "eslint .",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:ci": "jest --coverage --ci --reporters=default --reporters=jest-junit"
+    "test:ci": "jest --coverage --ci --reporters=default --reporters=jest-junit",
+    "demo": "node --disable-warning=ExperimentalWarning src/demo.mjs"
   },
   "author": "Emiliano Romero García",
   "license": "MIT",

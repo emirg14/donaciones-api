@@ -12,7 +12,7 @@ function authenticate(authService) {
     }
     try {
       const payload = authService.verifyToken(token);
-      req.user = { id: Number(payload.sub), rol: payload.rol, email: payload.email };
+      req.user = { id: Number(payload.sub), rol: payload.rol, tipo: payload.tipo, email: payload.email };
       return next();
     } catch (err) {
       return next(err);
