@@ -57,7 +57,7 @@ jobs:
       template: traditional-html
       reportDir: ${REPORT_DIR}
       reportFile: zap-reporte
-      reportTitle: OWASP ZAP - Donaciones API
+      reportTitle: OWASP ZAP - Alimentrega API
     risks: [info, low, medium, high]
     confidences: [falsepositive, low, medium, high, confirmed]
 
